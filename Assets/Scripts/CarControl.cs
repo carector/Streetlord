@@ -189,13 +189,15 @@ public class CarControl : MonoBehaviour
             // Powerslide if shift is held
             if (Input.GetKey(KeyCode.LeftShift) && transform.InverseTransformDirection(rb.velocity).z >= 7)
             {
-                steeringAngle = 45;
+                steeringAngle = 30;
 
                 WheelFrictionCurve wff = wheel.forwardFriction;
                 WheelFrictionCurve wf = wheel.sidewaysFriction;
-                wf.extremumValue = 1f;
-                wf.asymptoteValue = 1f;
-                wf.stiffness = 2;
+                wf.extremumValue = 0.5f;
+                wf.asymptoteValue = 0.5f;
+                wf.stiffness = 15;
+                wff.extremumValue = 0.25f;
+                wff.asymptoteValue = 0.25f;
                 wff.stiffness = 7;
                 wheel.sidewaysFriction = wf;
 
